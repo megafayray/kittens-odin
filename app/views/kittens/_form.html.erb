@@ -1,0 +1,36 @@
+<%= form_with model: @kitten, local: true do |kitten| %>
+  <% if @kitten.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kitten.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <ul>
+        <% @kitten.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= kitten.label :name, "Name:" %>
+    <%= kitten.text_field :name %>
+  </div>
+
+  <div>
+    <%= kitten.label :age, "Age:" %>
+    <%= kitten.select :age, options_for_select(0..99), { prompt: "In human years"} %>
+  </div>
+
+  <div>
+    <%= kitten.label :cuteness, "Cuteness:" %>
+    <%= kitten.select :cuteness, options_for_select(0..10), { prompt: "Bizarre, but ok"} %>
+  </div>
+
+  <div>
+    <%= kitten.label :softness, "Softness:" %>
+    <%= kitten.select :softness, options_for_select(0..10), { prompt: "0 is rocks"} %>
+  </div>
+
+  <div>
+    <%= kitten.submit @kitten.new_record? ? "Finish Adding This Kitten" : "Finish Editing This Kitten" %>
+  </div>
+<% end %>
