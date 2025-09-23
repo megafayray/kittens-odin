@@ -1,0 +1,10 @@
+<h1>Check this kitty out!</h1>
+
+<ul>
+    <li>Name: <%= @kitten.name %></li>
+    <li>Cuteness: <%= @kitten.cuteness %> out of 10</li>      
+    <li>Softness: <%= @kitten.softness %> out of 10</li> 
+    <li>Age: is just a number aka this is restricted information</li>
+</ul>
+
+<%= link_to "Delete", kitten_path(kitten), method: :delete, data: { confirm: "Are you sure you want to delete this kitten?" } %>
